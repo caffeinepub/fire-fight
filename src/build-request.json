@@ -1,0 +1,127 @@
+{
+  "kind": "build_request",
+  "title": "Create web-based gaming application",
+  "projectName": "Fire Fight",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Implement user authentication system using Internet Identity to allow players to create accounts and log in securely",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-8"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Users can authenticate using Internet Identity",
+        "User session persists across page refreshes",
+        "Login and logout functionality works correctly"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Create a game lobby system where authenticated players can view available game rooms and join matches",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-8"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Lobby displays list of available game rooms",
+        "Players can create new game rooms",
+        "Players can join existing game rooms",
+        "Room status updates in real-time"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Build a turn-based tactical combat game with a top-down 2D or simple 3D battlefield view where players take turns moving and attacking",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-8"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Game board renders with player positions visible",
+        "Players can move their character on their turn",
+        "Players can perform attack actions against opponents",
+        "Turn system alternates between players correctly",
+        "Game state updates and persists on backend"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Implement a health and damage system where players have health points that decrease when hit, and game ends when a player reaches zero health",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-8"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Each player starts with defined health points",
+        "Damage calculations reduce health correctly",
+        "Game declares winner when opponent health reaches zero",
+        "Health status visible to all players"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Create a leaderboard system that tracks player wins, losses, and ranking across all matches",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-8"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Player statistics stored and updated after each match",
+        "Leaderboard displays top players by win rate or score",
+        "Individual player stats accessible from profile view",
+        "Rankings update correctly after matches complete"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Design a cohesive visual theme with bold, energetic colors (avoiding blue and purple), modern typography, and tactical military-inspired UI elements that create an immersive combat gaming atmosphere",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-8"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Consistent color palette applied across all pages",
+        "Typography choices support readability and gaming aesthetic",
+        "UI elements have tactical/military styling",
+        "Visual theme creates cohesive experience throughout app"
+      ]
+    }
+  ],
+  "constraints": [
+    "Use turn-based mechanics instead of real-time shooting",
+    "Keep game scope suitable for web browser environment",
+    "Do not implement real-time WebSocket communication",
+    "Do not use external game engines or third-party game services"
+  ],
+  "nonGoals": [
+    "Real-time multiplayer battle royale gameplay",
+    "Mobile app development",
+    "Complex 3D graphics with advanced physics",
+    "100+ player matches",
+    "Voice chat or social media integration",
+    "GPS or location-based features"
+  ],
+  "imageRequirements": {
+    "required": [
+      "Tactical combat-themed hero banner with dramatic battlefield atmosphere (hero-banner.dim_1200x400.png)",
+      "Gaming app logo featuring bold 'Fire Fight' text with tactical military styling (logo.dim_256x256.png)",
+      "Game lobby background with strategic map aesthetic (lobby-bg.dim_1920x1080.png)",
+      "Player avatar placeholder icon with soldier silhouette (avatar-default.dim_128x128.png)"
+    ],
+    "edits": []
+  }
+}

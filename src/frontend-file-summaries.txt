@@ -1,0 +1,21 @@
+{
+  "frontend/src/index.css": "Global styles with tactical military color palette using OKLCH (oranges, reds, yellows, greens), custom fonts (Rajdhani for headings), and tactical UI enhancements including glows and animations.",
+  "frontend/tailwind.config.js": "Tailwind configuration with custom tactical military theme colors, Rajdhani display font, and tactical shadow utilities.",
+  "frontend/src/App.tsx": "Main application component with TanStack Router setup, theme provider, and routes for lobby, game board, and leaderboard with authentication guards.",
+  "frontend/src/components/Header.tsx": "Sticky header component with Fire Fight logo, navigation links to lobby and leaderboard, and login button with mobile menu support.",
+  "frontend/src/components/Footer.tsx": "Footer component with copyright notice and caffeine.ai attribution link with UTM tracking.",
+  "frontend/src/components/LoginButton.tsx": "Internet Identity login/logout button with loading states and tactical styling.",
+  "frontend/src/components/AuthGuard.tsx": "Authentication guard wrapper that ensures users are logged in before accessing protected content, showing appropriate loading and login prompts.",
+  "frontend/src/components/ProfileSetupModal.tsx": "Modal dialog for first-time user profile setup that prompts for soldier name after authentication.",
+  "frontend/src/hooks/useGetCallerUserProfile.ts": "React Query hook to fetch current user profile with proper loading state management to prevent modal flash.",
+  "frontend/src/hooks/useQueries.ts": "Custom React Query hooks for all backend operations including profile management, game room creation/joining, leaderboard fetching, and position updates.",
+  "frontend/src/pages/GameLobby.tsx": "Game lobby page displaying hero banner, available game rooms, and create room functionality with tactical styling.",
+  "frontend/src/components/HeroBanner.tsx": "Hero banner component with Fire Fight branding and tactical combat arena tagline over background image.",
+  "frontend/src/components/RoomCard.tsx": "Card component displaying individual game room information with player count and join button.",
+  "frontend/src/pages/GameBoard.tsx": "Turn-based tactical combat game board with 10x10 grid, player positions, and action controls.",
+  "frontend/src/components/GameGrid.tsx": "Interactive 10x10 grid component for tactical battlefield with clickable cells and player position visualization.",
+  "frontend/src/components/PlayerToken.tsx": "Player status display component showing avatar, name, and health bar with active turn indicator.",
+  "frontend/src/components/ActionPanel.tsx": "Action control panel with move and attack buttons for turn-based gameplay.",
+  "frontend/src/pages/Leaderboard.tsx": "Leaderboard page displaying top players with rankings and scores in tactical card layout.",
+  "frontend/src/components/LeaderboardTable.tsx": "Table component rendering player rankings with trophy icons for top 3 positions and score badges."
+}

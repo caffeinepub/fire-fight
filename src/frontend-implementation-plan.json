@@ -1,0 +1,192 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Fire Fight - Frontend Implementation Plan",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Implement Internet Identity authentication UI with login/logout functionality and user session persistence",
+      "acceptanceCriteria": [
+        "Users can authenticate using Internet Identity",
+        "User session persists across page refreshes",
+        "Login and logout functionality works correctly"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/LoginButton.tsx",
+          "operation": "create",
+          "description": "Create login button component using the authorization component's authentication system. Use useInternetIdentity hook to handle login/logout and clear query cache on logout. Verify the authorization component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/ProfileSetupModal.tsx",
+          "operation": "create",
+          "description": "Create modal for first-time user profile setup that prompts for user name. Use saveCallerUserProfile from backend interface. Verify the authorization component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useGetCallerUserProfile.ts",
+          "operation": "create",
+          "description": "Create hook to fetch current user profile using getCallerUserProfile from backend interface. Implement proper loading state management to prevent modal flash as per authorization component guidance. Verify the authorization component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/AuthGuard.tsx",
+          "operation": "create",
+          "description": "Create authentication guard wrapper component that ensures users are logged in before accessing application features. Show loading state while checking authentication status."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire LoginButton into the main navigation area. Add AuthGuard wrapper around authenticated routes. Include ProfileSetupModal conditionally when user profile is null after authentication."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Create game lobby UI with room list, create room, and join room functionality",
+      "acceptanceCriteria": [
+        "Lobby displays list of available game rooms",
+        "Players can create new game rooms",
+        "Players can join existing game rooms",
+        "Room status updates in real-time"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/GameLobby.tsx",
+          "operation": "create",
+          "description": "Create game lobby page displaying available rooms with create and join buttons. Use createGameRoom and joinGameRoom from backend interface. Include the generated lobby-bg.dim_1920x1080.png as background image from frontend/public/assets/generated/lobby-bg.dim_1920x1080.png."
+        },
+        {
+          "path": "frontend/src/hooks/useGameRooms.ts",
+          "operation": "create",
+          "description": "Create hook for managing game room operations including creating and joining rooms. Use React Query for state management and automatic refetching."
+        },
+        {
+          "path": "frontend/src/components/RoomCard.tsx",
+          "operation": "create",
+          "description": "Create room card component displaying room information and join button for individual game rooms in the lobby."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for GameLobby page and wire it into the router. Ensure route is protected by AuthGuard."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Build 2D game tactical combat interface with turn-based movement and attack actions",
+      "acceptanceCriteria": [
+        "Game board renders with player positions visible",
+        "Players can move their character on their turn",
+        "Players can perform attack actions against opponents",
+        "Turn system alternates between players correctly",
+        "Game state updates and persists on backend"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/GameBoard.tsx",
+          "operation": "create",
+          "description": "Create 2D game board page with top-down tactical view. Render grid-based battlefield with player positions. Implement turn-based UI controls for movement and attack actions using setPosition from backend interface."
+        },
+        {
+          "path": "frontend/src/components/GameGrid.tsx",
+          "operation": "create",
+          "description": "Create game grid component rendering the 2D tactical battlefield with clickable cells for movement. Display player positions and visual indicators for valid moves."
+        },
+        {
+          "path": "frontend/src/components/PlayerToken.tsx",
+          "operation": "create",
+          "description": "Create player token component representing player characters on the game board. Use the generated avatar-default.dim_128x128.png from frontend/public/assets/generated/avatar-default.dim_128x128.png as default avatar."
+        },
+        {
+          "path": "frontend/src/components/ActionPanel.tsx",
+          "operation": "create",
+          "description": "Create action panel component with move and attack buttons for player turn actions. Disable actions when not player's turn."
+        },
+        {
+          "path": "frontend/src/hooks/useGameState.ts",
+          "operation": "create",
+          "description": "Create hook for managing game state including turn tracking, position updates, and action execution. Use React Query for syncing with backend."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for GameBoard page with room ID parameter and wire it into the router. Ensure route is protected by AuthGuard."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Create leaderboard UI displaying player rankings and statistics",
+      "acceptanceCriteria": [
+        "Player statistics stored and updated after each match",
+        "Leaderboard displays top players by win rate or score",
+        "Individual player stats accessible from profile view",
+        "Rankings update correctly after matches complete"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Leaderboard.tsx",
+          "operation": "create",
+          "description": "Create leaderboard page displaying top players by score using getLeaderboard from backend interface. Show player names and scores in ranked order."
+        },
+        {
+          "path": "frontend/src/components/LeaderboardTable.tsx",
+          "operation": "create",
+          "description": "Create leaderboard table component rendering player rankings with name, score, and rank position."
+        },
+        {
+          "path": "frontend/src/hooks/useLeaderboard.ts",
+          "operation": "create",
+          "description": "Create hook to fetch leaderboard data using getLeaderboard from backend interface. Use React Query for automatic updates."
+        },
+        {
+          "path": "frontend/src/components/PlayerStatsCard.tsx",
+          "operation": "create",
+          "description": "Create player stats card component showing individual player statistics for profile view."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for Leaderboard page and wire it into the router. Add navigation link in header to access leaderboard."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Apply tactical military-inspired visual theme with bold energetic colors and modern typography",
+      "acceptanceCriteria": [
+        "Consistent color palette applied across all pages",
+        "Typography choices support readability and gaming aesthetic",
+        "UI elements have tactical/military styling",
+        "Visual theme creates cohesive experience throughout app"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Update global styles with tactical military color palette using bold energetic colors (oranges, reds, yellows, greens) avoiding blue and purple. Apply modern gaming typography. Include the generated hero-banner.dim_1200x400.png from frontend/public/assets/generated/hero-banner.dim_1200x400.png and logo.dim_256x256.png from frontend/public/assets/generated/logo.dim_256x256.png as CSS background references where appropriate."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Configure Tailwind theme with custom color palette for tactical military aesthetic (oranges, reds, yellows, greens, neutrals), typography settings for gaming experience, and tactical UI element styling utilities."
+        },
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "create",
+          "description": "Create header component with tactical military styling including the Fire Fight logo from frontend/public/assets/generated/logo.dim_256x256.png, navigation links, and LoginButton."
+        },
+        {
+          "path": "frontend/src/components/HeroBanner.tsx",
+          "operation": "create",
+          "description": "Create hero banner component using the generated hero-banner.dim_1200x400.png from frontend/public/assets/generated/hero-banner.dim_1200x400.png. Display on GameLobby page with dramatic battlefield atmosphere."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire Header component into App layout to appear on all pages. Add HeroBanner to GameLobby page."
+        }
+      ]
+    }
+  ]
+}

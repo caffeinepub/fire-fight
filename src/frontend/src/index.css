@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 0.25rem;
+        /* Tactical military color palette - light mode */
+        --background: 0.98 0.01 60;
+        --foreground: 0.20 0.02 30;
+        --card: 0.96 0.01 50;
+        --card-foreground: 0.20 0.02 30;
+        --popover: 0.98 0.01 60;
+        --popover-foreground: 0.20 0.02 30;
+        /* Bold orange primary */
+        --primary: 0.65 0.20 35;
+        --primary-foreground: 0.98 0.01 60;
+        /* Tactical green secondary */
+        --secondary: 0.55 0.15 145;
+        --secondary-foreground: 0.98 0.01 60;
+        --muted: 0.92 0.01 50;
+        --muted-foreground: 0.50 0.02 30;
+        /* Energetic yellow accent */
+        --accent: 0.75 0.18 85;
+        --accent-foreground: 0.20 0.02 30;
+        /* Red destructive */
+        --destructive: 0.55 0.22 25;
+        --destructive-foreground: 0.98 0.01 60;
+        --border: 0.85 0.02 40;
+        --input: 0.85 0.02 40;
+        --ring: 0.65 0.20 35;
+        --chart-1: 0.65 0.20 35;
+        --chart-2: 0.55 0.15 145;
+        --chart-3: 0.75 0.18 85;
+        --chart-4: 0.55 0.22 25;
+        --chart-5: 0.70 0.16 120;
+    }
+
+    .dark {
+        /* Dark mode - tactical night vision aesthetic */
+        --background: 0.15 0.02 140;
+        --foreground: 0.95 0.01 60;
+        --card: 0.20 0.02 140;
+        --card-foreground: 0.95 0.01 60;
+        --popover: 0.18 0.02 140;
+        --popover-foreground: 0.95 0.01 60;
+        /* Bright orange primary for dark mode */
+        --primary: 0.70 0.22 35;
+        --primary-foreground: 0.15 0.02 140;
+        /* Tactical green */
+        --secondary: 0.60 0.16 145;
+        --secondary-foreground: 0.15 0.02 140;
+        --muted: 0.25 0.02 140;
+        --muted-foreground: 0.65 0.02 60;
+        /* Yellow accent */
+        --accent: 0.80 0.20 85;
+        --accent-foreground: 0.15 0.02 140;
+        /* Red destructive */
+        --destructive: 0.60 0.24 25;
+        --destructive-foreground: 0.95 0.01 60;
+        --border: 0.30 0.02 140;
+        --input: 0.30 0.02 140;
+        --ring: 0.70 0.22 35;
+        --chart-1: 0.70 0.22 35;
+        --chart-2: 0.60 0.16 145;
+        --chart-3: 0.80 0.20 85;
+        --chart-4: 0.60 0.24 25;
+        --chart-5: 0.75 0.18 120;
+    }
+
+    * {
+        @apply border-border;
+    }
+    
+    body {
+        @apply bg-background text-foreground;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Rajdhani', 'Inter', sans-serif;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+    }
+}
+
+/* Tactical UI enhancements */
+.tactical-border {
+    border: 2px solid oklch(var(--primary));
+    box-shadow: 0 0 10px oklch(var(--primary) / 0.3);
+}
+
+.tactical-glow {
+    box-shadow: 0 0 20px oklch(var(--primary) / 0.4);
+}
+
+.combat-grid-cell {
+    transition: all 0.2s ease;
+}
+
+.combat-grid-cell:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px oklch(var(--accent) / 0.5);
+}
+
+/* Hero banner styling */
+.hero-banner {
+    background: linear-gradient(135deg, oklch(var(--primary) / 0.9), oklch(var(--secondary) / 0.8));
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/assets/generated/hero-banner.dim_1200x400.png') center/cover;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+/* Loading animations */
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 0 10px oklch(var(--primary) / 0.3);
+    }
+    50% {
+        box-shadow: 0 0 20px oklch(var(--primary) / 0.6);
+    }
+}
+
+.animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+}
